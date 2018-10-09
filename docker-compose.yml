@@ -1,0 +1,25 @@
+version: '3.2'
+services:
+  magento:
+    image: alexcheng/magento:latest
+    ports:
+      - "80:80"
+    links:
+      - magento_db
+    env_file:
+      - magento_env
+    container_name: magento
+  magento_db:
+    image: mysql:5.6.23
+    volumes:
+      - type: volume
+        source: dbdata
+        target: /var/lib/mysql/data
+        volume:
+          nocopy: true
+    env_file:
+      - magento_env
+    container_name: magento_db
+
+volumes:
+  dbdata:
