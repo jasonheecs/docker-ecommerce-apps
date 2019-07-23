@@ -21,5 +21,11 @@ services:
       - magento_env
     container_name: magento_db
 
+  woocommerce:
+    image: thiagobarradas/woocommerce:3.2.6-wp4.9.1-php7.0
+    ports:
+      - "80:80"
+    container_name: woocommerce
+
 volumes:
   dbdata:
